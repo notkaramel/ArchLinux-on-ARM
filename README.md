@@ -11,8 +11,8 @@ This is an installer script to install ArchLinux ARM (v7) to Raspberry Pi 400. I
 
 ### Usage:
 ```bash
-git clone [github.com link](https://github.com/notkaramel/ArchLinux-ARMv7-Installer.git)
-cd ArchLinux-ARMv7-Installer.git
+git clone [github.com link](https://github.com/notkaramel/ArchLinux-ARM-Installer.git)
+cd ArchLinux-ARM-Installer
 ./installer_armv7.bash
 ```
 > **NOTE**: You may adjust the code to suit your personal machine. Please read through the scripts before running them.
