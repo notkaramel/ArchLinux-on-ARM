@@ -16,6 +16,7 @@ cd ArchLinux-ARMv7-Installer.git
 ./installer_armv7.bash
 ```
 > **NOTE**: You may adjust the code to suit your personal machine. Please read through the scripts before running them.
+
 - After the program finishes, make sure that there is no errors in the terminal.
 - Plug in the SD Card into your Raspberry Pi of choice. If everything works, you should see a welcome message. (Congrats!!)
 - Login as the root user by typing directly into the empty terminal **```root```** user and **```root```** as the password.
