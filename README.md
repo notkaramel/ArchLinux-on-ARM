@@ -13,9 +13,9 @@ This is a minimal installer script to install ArchLinux ARM (v7) onto a Raspberr
 ```bash
 git clone [github.com link](https://github.com/notkaramel/ArchLinux-ARM-Installer.git)
 cd ArchLinux-ARM-Installer
-./installer_armv7.bash
+python3 installer.py
 ```
-> **NOTE**: You may adjust the code to suit your personal machine. Please read through the scripts before running them.
+> **NOTE**: Please read through the scripts before running them. You may adjust the code to suit your personal machine. 
 
 - After the program finishes, make sure that there is no errors in the terminal.
 - Plug in the SD Card into your Raspberry Pi of choice. If everything works, you should see a welcome message. (Congrats!!)
