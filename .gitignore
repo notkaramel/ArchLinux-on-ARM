@@ -133,6 +133,3 @@ boot/
 root/
 ArchLinuxARM*
 armtix*
-
-# Ignore some of my testing & local files
-.vscode/*
