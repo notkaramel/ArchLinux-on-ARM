@@ -134,5 +134,6 @@ root/
 ArchLinuxARM*
 armtix*
 
-# Ignore some of my testing files
+# Ignore some of my testing & local files
+.vscode/
 testing.py
