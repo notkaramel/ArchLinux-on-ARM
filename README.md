@@ -1,5 +1,5 @@
 # ArchLinux installer for ARMv7 Raspberry Pi
-### Version: 1.0.2
+### Version: 1.0.3
 ### Description:
 This is a minimal installer script to install ArchLinux ARM (v7) onto a Raspberry Pi 400. It should also work on all Raspberry Pi models that supports ARMv7 (e.g., Raspberry Pi 4)
 
@@ -13,11 +13,9 @@ This is a minimal installer script to install ArchLinux ARM (v7) onto a Raspberr
 ```bash
 git clone [github.com link](https://github.com/notkaramel/ArchLinux-ARM-Installer.git)
 cd ArchLinux-ARM-Installer
-./installer.py
+python3 installer.py
 ```
 > **NOTE**: Please read through the scripts before running them. You may adjust the code to suit your personal machine. 
->
-> **NOTE2**: if ```./installer.py``` doesn't work, try to make it executable by ```chmod +x installer.py```
 
 - After the program finishes, make sure that there is no errors in the terminal.
 - Plug in the SD Card into your Raspberry Pi of choice. If everything works, you should see a welcome message. (Congrats!!)
