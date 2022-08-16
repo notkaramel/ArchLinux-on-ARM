@@ -133,3 +133,6 @@ boot/
 root/
 ArchLinuxARM*
 armtix*
+
+# Ignore some of my testing files
+testing.py
