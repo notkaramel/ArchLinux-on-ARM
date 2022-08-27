@@ -1,4 +1,4 @@
-# ArchLinux installer for ARMv7 Raspberry Pi
+# ArchLinux installer for Raspberry Pi
 ### Version: 1.0.3
 ### Description:
 This is a minimal installer script to install ArchLinux ARM (v7) onto a Raspberry Pi 400. It should also work on all Raspberry Pi models that supports ARMv7 (e.g., Raspberry Pi 4)
