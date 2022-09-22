@@ -12,7 +12,7 @@ This is a minimal installer script to install ArchLinux ARM (v7) onto a Raspberr
 
 ### Usage:
 ```bash
-git clone [github.com link](https://github.com/notkaramel/ArchLinux-ARM-Installer.git)
+git clone https://github.com/notkaramel/ArchLinux-ARM-Installer.git
 cd ArchLinux-ARM-Installer
 python3 installer.py
 ```
