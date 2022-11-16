@@ -1,7 +1,7 @@
 import os
 
 # Variables:
-root_filesystem = "ArchLinuxARM-rpi-armv7-latest.tar.gz"
+root_filesystem = "ArchLinuxARM-armv7-latest.tar.gz"
 root_filesystem_url = "http://os.archlinuxarm.org/os/" + root_filesystem
 
 # Select SD card partition name via input
