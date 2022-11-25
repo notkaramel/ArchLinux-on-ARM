@@ -1,10 +1,10 @@
 import os
 
 # Variables:
-root_filesystem = "ArchLinuxARM-2022.03-rpi-aarch64-rootfs.tar.gz"
-# root_filesystem_url = "http://os.archlinuxarm.org/os/" + root_filesystem
+root_filesystem = "ArchLinuxARM-rpi-aarch64-latest.tar.gz"
+root_filesystem_url = "http://os.archlinuxarm.org/os/" + root_filesystem
 
-root_filesystem_url = "https://alaa.ad24.cz/repos/2022/07/23/os/rpi/" + root_filesystem
+# root_filesystem_url = "https://alaa.ad24.cz/repos/2022/07/23/os/rpi/" + root_filesystem
 
 # Select SD card partition name via input
 print("Available partitions:")
