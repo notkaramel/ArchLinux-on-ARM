@@ -14,8 +14,18 @@ This is a minimal installer script to install ArchLinux ARM (v7) onto a Raspberr
 ```bash
 git clone https://github.com/notkaramel/ArchLinux-ARM-Installer.git
 cd ArchLinux-ARM-Installer
+```
+
+You may run the installer directly, or ```chmod +x``` the script and run it.
+```bash
+chmod +x installer.py
+./installer.py
+```
+Alternatively, the more intuitive way is to run the script with python3:
+```bash
 python3 installer.py
 ```
+
 > **NOTE**: Please read through the scripts before running them. You may adjust the code to suit your personal machine. 
 
 - After the program finishes, make sure that there is no errors in the terminal.
