@@ -7,7 +7,6 @@ def checkRoot():
         exit()
 
 def checkInternetConnection():
-    print("Checking internet connection...", end="")
     p = subprocess.call("ping -c 3 -q google.com >&/dev/null", shell=True)
     if p == 0:
         print("OK")
@@ -46,7 +45,7 @@ def findSDCard() -> str:
     if os.path.exists(f"/dev/{partition}"):
         print("Found partition")
         print("Partition is mounted, unmounting...")
-        os.system(f"sudo -f umount /dev/{partition}")
+        os.system(f"sudo umount -f /dev/{partition}*")
         return partition
     else:
         print("Partition not found, try again or Ctrl + C to exit.")
@@ -60,33 +59,46 @@ def findSDCard() -> str:
 
 def formatSDCard(partition):
     print("Using parted to partition your SD card")
-    # TODO
+    print("WARNING: This will delete all data on the SD card")
+    # Ask for confirmation
+    # confirm = input("Are you sure you want to continue? (y/n): ")
+    # if confirm == "y":
+    #     # use parted to partition the first 300MB of the SD card
+        
+    # full command:
+    # ❯ sudo parted -a optimal /dev/sdX --script -- mklabel msdos mkpart primary fat32 0% 300MiB mkpart primary ext4 300MiB 100%
+    table = f'mklabel msdos'
+    boot_part = f'mkpart primary fat32 0% 300MiB'
+    rootfs_part = f'mkpart primary ext4 300MiB 100%'
+    subprocess.call(f"sudo parted -a optimal /dev/{partition} --script -- {table} {boot_part} {rootfs_part}", shell=True)
 
     # /dev/sdX1 to FAT
     print("Create the FAT partition...")
-    os.system("sudo mkfs.vfat /dev/" + partition + "1")
+    os.system(f'sudo mkfs.vfat /dev/{partition}1 > /dev/null 2>&1')
 
     # /dev/sdX2 to ext4
     print("Create the ext4 partition...")
-    os.system("sudo mkfs.ext4 /dev/" + partition + "2")
+    os.system(f"sudo mkfs.ext4 /dev/{partition}2 > /dev/null 2>&1")
 
-def partitionSDCard(partition):
-    # TODO
-    pass
-
-def mountSDCard(partition):
+def mountSDCard(partition, temp_dir="./temp"):
     # Mount the partitions
     # os.system("sudo mount /dev/"+partition+"1 boot")
     # os.system("sudo mount /dev/" + partition + "2 root")
     
     print("Mounting partitions...")
-    subprocess.call(f"sudo mount --mkdir /dev/{partition}1 ./temp/boot")
-    subprocess.call(f"sudo mount --mkdir /dev/{partition}2 ./temp/root")
+    subprocess.call(f"sudo mount --mkdir /dev/{partition}1 {temp_dir}/boot", shell=True)
+    subprocess.call(f"sudo mount --mkdir /dev/{partition}2 {temp_dir}/root", shell=True)
 
-def downloadRootFS(root_fs_url):
+def downloadRootFS(root_fs_url, temp_dir="./temp"):
     print("Downloading the root filesystem...")
-    subprocess.call(f'wget {root_fs_url} ./temp')
+    subprocess.call(f'wget {root_fs_url} -P {temp_dir}', shell=True)
 
+def extractRootFS(root_fs, temp_dir="./temp"):
+    # Extract the root filesystem & sync
+    print("Extracting & syncing the root filesystem...")
+    print(f"sudo bsdtar -xpf {root_fs} - -C {temp_dir}/root")
+    os.system(f"sudo bsdtar -xpf {root_fs} - -C {temp_dir}/root")
+    os.system("sync")
 
 def install(choice): # Perform clean installation
     # Hardcoded options, sorry :(
@@ -101,13 +113,17 @@ def install(choice): # Perform clean installation
     
     # Format SD card
     partition=findSDCard()
-    formatSDCard(partition)
-    partitionSDCard(partition)
+    print(f"Creating temporary directory at {os.getcwd()}/temp")
+    print(f'Formatting & partitioning /dev/{partition}...')
+    formatSDCard(partition) # formatted + partitioned
     mountSDCard(partition)
 
-
-
+    # Download root filesystem
+    # Create temp directory
+    downloadRootFS(root_fs_url)
+    extractRootFS(root_fs)
+    cleanup()
     
-    # After [skipping] partition
-    
-    exit()
+def cleanup():
+    print("Cleaning up...")
+    os.system("sudo rm -rf ./temp")

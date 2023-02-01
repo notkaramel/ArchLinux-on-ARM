@@ -5,13 +5,17 @@ import utils, os
 utils.checkRoot()
 
 # Checking if the user is connected to the internet
+print("Checking internet connection...", end="")
 utils.checkInternetConnection()
 
 try:
     choice = utils.menu()
     utils.install(choice)
-    print("place holder")
+    print("Installation complete!")
+
 except KeyboardInterrupt:
     print("\nCleaning up...")
     os.system("sudo rm -rf ./temp")
     exit()
+
+

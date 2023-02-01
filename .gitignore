@@ -136,3 +136,6 @@ armtix*
 
 # Ignore some of my testing & local files
 .vscode/*
+playground.py
+rpi*/
+arm*/
