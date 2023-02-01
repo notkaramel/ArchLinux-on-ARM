@@ -30,7 +30,7 @@ def menu() -> int:
 
     print("Please select your Raspberry Pi OS: ", end="")
     choice = int(input())
-    if choice > len(options):
+    if choice >= len(options):
         print("Invalid choice.")
         exit()
     else:
