@@ -101,6 +101,8 @@ def extractRootFS(root_fs, temp_dir="./temp"):
     print(f"sudo bsdtar -xpf {temp_dir}/{root_fs} - -C {temp_dir}/root")
     os.system(f"sudo bsdtar -xpf {temp_dir}/{root_fs} - -C {temp_dir}/root")
     os.system("sync")
+    os.system(f"sudo mv -r {temp_dir}/root/boot/* {temp_dir}/boot/")
+
 
 def install(choice): # Perform clean installation
     # Hardcoded options, sorry :(
