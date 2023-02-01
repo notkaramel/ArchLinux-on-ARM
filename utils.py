@@ -1,5 +1,7 @@
 import os
 import subprocess
+import time
+import sys
 
 def checkRoot():
     if os.geteuid() != 0:
@@ -96,8 +98,8 @@ def downloadRootFS(root_fs_url, temp_dir="./temp"):
 def extractRootFS(root_fs, temp_dir="./temp"):
     # Extract the root filesystem & sync
     print("Extracting & syncing the root filesystem...")
-    print(f"sudo bsdtar -xpf {root_fs} - -C {temp_dir}/root")
-    os.system(f"sudo bsdtar -xpf {root_fs} - -C {temp_dir}/root")
+    print(f"sudo bsdtar -xpf {temp_dir}/{root_fs} - -C {temp_dir}/root")
+    os.system(f"sudo bsdtar -xpf {temp_dir}/{root_fs} - -C {temp_dir}/root")
     os.system("sync")
 
 def install(choice): # Perform clean installation
@@ -122,8 +124,24 @@ def install(choice): # Perform clean installation
     # Create temp directory
     downloadRootFS(root_fs_url)
     extractRootFS(root_fs)
-    cleanup()
+    cleanup(partition)
     
-def cleanup():
+def cleanup(partition):
     print("Cleaning up...")
+    os.system(f"sudo umount -f /dev/{partition}*")
+
     os.system("sudo rm -rf ./temp")
+
+def loadingAnimation():
+    # Define an animation sequence as a list of strings
+    animation = ["|", "/", "-", "\\"]
+    try:
+
+        # Use a loop to continuously display the animation sequence
+        while True:
+            for i in range(len(animation)):
+                sys.stdout.write("\r" + animation[i % len(animation)])
+                sys.stdout.flush()
+                time.sleep(0.1)
+    except KeyboardInterrupt:
+        sys.stdout.write("\rDone!     ")
