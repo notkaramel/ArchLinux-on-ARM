@@ -129,13 +129,8 @@ dmypy.json
 .pyre/
 
 # Ignore script generated files
-boot/
-root/
-ArchLinuxARM*
-armtix*
+OLD/
 
 # Ignore some of my testing & local files
 .vscode/*
-playground.py
-rpi*/
-arm*/
+playgound.py
