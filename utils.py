@@ -1,7 +1,4 @@
-import os
-import subprocess
-import time
-import sys
+import os, subprocess, time, sys, threading
 
 def checkRoot():
     if os.geteuid() != 0:
@@ -101,7 +98,7 @@ def extractRootFS(root_fs, temp_dir="./temp"):
     print(f"sudo bsdtar -xpf {temp_dir}/{root_fs} - -C {temp_dir}/root")
     os.system(f"sudo bsdtar -xpf {temp_dir}/{root_fs} - -C {temp_dir}/root")
     os.system("sync")
-    os.system(f"sudo mv -r {temp_dir}/root/boot/* {temp_dir}/boot/")
+    os.system(f"sudo cp -r {temp_dir}/root/boot/* {temp_dir}/boot/")
 
 
 def install(choice): # Perform clean installation
@@ -137,13 +134,8 @@ def cleanup(partition):
 def loadingAnimation():
     # Define an animation sequence as a list of strings
     animation = ["|", "/", "-", "\\"]
-    try:
-
-        # Use a loop to continuously display the animation sequence
-        while True:
-            for i in range(len(animation)):
-                sys.stdout.write("\r" + animation[i % len(animation)])
-                sys.stdout.flush()
-                time.sleep(0.1)
-    except KeyboardInterrupt:
-        sys.stdout.write("\rDone!     ")
+    while True:
+        for i in range(len(animation)):
+            sys.stdout.write("\r" + animation[i % len(animation)])
+            sys.stdout.flush()
+            time.sleep(0.1)
