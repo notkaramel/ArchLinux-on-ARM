@@ -4,10 +4,13 @@
 
 ### Description:
 A minimal CLI script to install ArchLinuxARM to an ARM device. Currently compatible and tested successfully on Paspberry Pi 3B+ and 400 (meaning it should supports ARMv7 compatible Raspberry Pi devices).
+
 ### Available options:
 - ARMv6 on RPi (Zero, Zero W) (Cortex A7)
 - ARMv7 on RPi (3, 3B+, 4, 400) (Cortex A53, A72)
 - ARMv8 on RPi (4, 400) (Cortex A72)
+- See more: [Compability](Compatibility.md)
+- 
 ### Requirements:
 - An SD Card
   - 300 MiB will be used for the ```boot``` partition
