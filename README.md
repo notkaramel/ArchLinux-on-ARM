@@ -3,7 +3,7 @@
 ### Version: 1.1.1 | Last updated: 2023-Feb-02
 
 ### Description:
-A minimal CLI script to install ArchLinuxARM to an ARM device. Currently compatible and tested successfully on Paspberry Pi 3B+ and 400 (meaning it should supports ARMv7 compatible Raspberry Pi devices).
+A minimal CLI script to install ArchLinuxARM to an ARM device. Currently compatible and tested successfully on Raspberry Pi 3B+ and 400 (meaning it should supports ARMv7 compatible Raspberry Pi devices).
 
 ### Available options:
 - ARMv6 on RPi (Zero, Zero W) (Cortex A7)
