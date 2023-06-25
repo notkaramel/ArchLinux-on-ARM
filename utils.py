@@ -44,7 +44,7 @@ def findSDCard() -> str:
     if os.path.exists(f"/dev/{partition}"):
         print("Found partition")
         print("Partition is mounted, unmounting...")
-        os.system(f"sudo umount -f /dev/{partition}*")
+        os.system(f"sudo umount -A /dev/{partition}")
         return partition
     else:
         print("Partition not found, try again or Ctrl + C to exit.")
